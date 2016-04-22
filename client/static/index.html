@@ -86,7 +86,7 @@
 
 
 
-      myAppModule.controller('newQuestionController', function($scope, questionsFactory, $location) {
+      myAppModule.controller('newQuestionController', function($scope, questionsFactory, $location, loginFactory) {
           $scope.questions = [];
           $scope.question = {};
 
@@ -111,7 +111,7 @@
 
      }) 
 
-      myAppModule.controller('questionController', function($scope, questionsFactory, $location, $routeParams) {
+      myAppModule.controller('questionController', function($scope, questionsFactory, $location, $routeParams, loginFactory) {
            $scope.question = {};
            var id = $routeParams.id;
 
@@ -126,7 +126,7 @@
 
         })
 
-       myAppModule.controller('newAnswerController', function($scope, answersFactory, $location, $routeParams) {
+       myAppModule.controller('newAnswerController', function($scope, answersFactory, $location, $routeParams, loginFactory) {
 
 
          $scope.answers =[];
@@ -137,7 +137,7 @@
         answersFactory.create($scope.new_answer, function() {
           answersFactory.index(function(data) {
             $scope.answers = data;
-               $location.path('/');
+               $location.path('/dashboard');
             })
           $scope.new_answer = {};
         })
